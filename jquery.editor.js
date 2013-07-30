@@ -326,8 +326,8 @@
 				case 'saveAll':
 
 					opts = $.extend({
-                        // URL to post to
-                        url : null,
+						// URL to post to
+						url : null,
 						// Additional data to post when saving
 						data : {},
 						// Callback to call when save request returns successfully
