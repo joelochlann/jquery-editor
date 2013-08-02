@@ -48,7 +48,8 @@
 				'left'        : $el.offset().left,
 				'font-family' : $el.css('font-family'),
 				'font-size'   : $el.css('font-size'),
-				'font-weight' : $el.css('font-weight')
+				'font-weight' : $el.css('font-weight'),
+				'border'      : 0
 			})
 			.attr('id', 'jqEditor')
 			.appendTo('body')
