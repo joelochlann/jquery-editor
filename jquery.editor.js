@@ -141,8 +141,7 @@
         $.post({
             url : opts.url,
             data : data
-        })
-        .done( function() {
+        }).done( function() {
             // Mark cell as unedited
             $el
                 .removeClass(editedClass)
@@ -150,8 +149,7 @@
             	.trigger('editor.unedited');
             
             opts.success();
-        })
-        .fail( function() { opts.failure() } );
+        }).fail( function() { opts.failure() } );
 	},
 
 
@@ -179,8 +177,7 @@
         $.post({
             url : opts.url,
             data : data
-        })
-        .done( function() {
+        }).done( function() {
             // Mark cells as unedited
             $container
                 .find('.'+editedClass)
@@ -192,8 +189,7 @@
             // we have to call it on the element which saveAllEdits was called on.
             $container.trigger('editor.unedited');
             opts.success();
-        })
-        .fail( function() { opts.failure() } );
+        }).fail( function() { opts.failure() } );
 	},
 
 
@@ -230,8 +226,6 @@
 
 	/**
 	 * Handle keyup events
-	 *
-	 * Tiny function, but has to be given a name so that it can be unbound later
 	 */
 	handleKeyup = function(event) {
 		if ($currentlyEdited.attr('data-originalValue') !== $editor.val()) {
