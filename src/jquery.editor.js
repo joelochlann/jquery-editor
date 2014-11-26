@@ -8,6 +8,7 @@
 	var $currentlyEdited = false,
 		$editor = false,
 		editedClass = false,
+		console = window.console,
 
 
 	/**
@@ -67,7 +68,7 @@
 	/**
 	 * Close an editor
 	 */
-	closeEditor = function($el) {
+	closeEditor = function() {
 		$editor.remove();
 		$editor = false;
 		$currentlyEdited = false;
@@ -138,18 +139,20 @@
 
 		data[$el.attr('id')] = $el.text();
 
-        $.post({
-            url : opts.url,
-            data : data
-        }).done( function() {
-            // Mark cell as unedited
-            $el
-                .removeClass(editedClass)
-                .removeAttr('data-originalValue')
-            	.trigger('editor.unedited');
-            
-            opts.success();
-        }).fail( function() { opts.failure() } );
+		$.post({
+			url : opts.url,
+			data : data
+		}).done(function() {
+			// Mark cell as unedited
+			$el
+				.removeClass(editedClass)
+				.removeAttr('data-originalValue')
+				.trigger('editor.unedited');
+			
+			opts.success();
+		}).fail(function() {
+			opts.failure();
+		});
 	},
 
 
@@ -173,23 +176,25 @@
 
 			data[id] = value;
 		});
-        
-        $.post({
-            url : opts.url,
-            data : data
-        }).done( function() {
-            // Mark cells as unedited
-            $container
-                .find('.'+editedClass)
-                .removeClass(editedClass)
-                .removeAttr('data-originalValue');
-            
-            // Elsewhere we trigger this event on the element actually being
-            // edited/unedited. Since at this point nothing is being edited,
-            // we have to call it on the element which saveAllEdits was called on.
-            $container.trigger('editor.unedited');
-            opts.success();
-        }).fail( function() { opts.failure() } );
+		
+		$.post({
+			url : opts.url,
+			data : data
+		}).done( function() {
+			// Mark cells as unedited
+			$container
+				.find('.'+editedClass)
+				.removeClass(editedClass)
+				.removeAttr('data-originalValue');
+			
+			// Elsewhere we trigger this event on the element actually being
+			// edited/unedited. Since at this point nothing is being edited,
+			// we have to call it on the element which saveAllEdits was called on.
+			$container.trigger('editor.unedited');
+			opts.success();
+		}).fail(function() {
+			opts.failure();
+		});
 	},
 
 
@@ -254,7 +259,7 @@
 
 		// These options are common to all actions.
 		// May be overriden by calling code, or by specific action.
-		var opts = $.extend({
+		opts = $.extend({
 
 
 		}, opts);
@@ -287,7 +292,7 @@
 								this.editor('store', event.data);
 							}
 						},
-						onkeyup : function(event) { },
+						onkeyup : function() { },
 
 						// This is the class applied to cells when
 						// they are in an edited state.
@@ -330,8 +335,8 @@
 						// Callback when save request fails
 						failure : function() {}
 					}, opts);
-                    
-                    
+					
+					
 
 					if (typeof opts.url !== 'string') {
 						console.error('Must supply URL parameter when saving');
@@ -358,7 +363,7 @@
 
 
 				default:
-					console.warn('Unknown command "'+action+'" for jquery.editor')
+					console.warn('Unknown command "'+action+'" for jquery.editor');
 
 			}
 
@@ -369,7 +374,7 @@
 		// For method chaining
 		return this;
 
-	}
+	};
 }(jQuery));
 
 
