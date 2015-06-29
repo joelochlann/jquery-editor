@@ -4,7 +4,7 @@ A lightweight jQuery plugin for in-place editing of the DOM.
 Works on divs and spans.
 
 ## Demo
-http://jsbin.com/hofuma/2/
+http://jsbin.com/monamowuso
 
 ## Features
 * Open
