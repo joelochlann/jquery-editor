@@ -36,7 +36,8 @@
         // i.e. its value before this particular edit
         $el.attr('data-previousValue', currentValue);
 
-        $el.text('');
+        $el.data('originalColor', $el.css('color'));
+        $el.css('color', 'transparent');
 
         // Copy contents and attributes of the element we're editing
         $editor
@@ -68,8 +69,11 @@
     /**
      * Close an editor
      */
-    closeEditor = function() {
-        $editor.remove();
+    closeEditor = function($el) {
+        $el.css('color', $el.data('originalColor'));
+        if ($editor) {
+            $editor.remove();
+        }
         $editor = false;
         $currentlyEdited = false;
 
@@ -284,7 +288,7 @@
                         onkeydown : function(event) {
                             // Esc
                             if (event.keyCode === 27) {
-                                this.editor('revert', event.data);
+                                this.editor('cancel', event.data);
                             }
 
                             // Enter
