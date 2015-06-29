@@ -39,7 +39,7 @@ jQuery Editor can be used as a normal script or with an AMD compatible loader li
 <script src="jquery.editor.js"></script>
 <script>
     $('.tabs').editor({
-	    // options
+        // options
     });
 </script>
 ```
@@ -49,13 +49,13 @@ jQuery Editor will work with RequireJS without any need for shims. Just ensure t
 
 ```js
 require.config({
-	paths: {
-		jquery: 'http://code.jquery.com/jquery-latest',
-	}
+    paths: {
+        jquery: 'http://code.jquery.com/jquery-latest',
+    }
 });
 
 require(['jquery', 'jquery.editor'], function($) {
-	$('.tabs').editor();
+    $('.tabs').editor();
 });
 ```
 
@@ -193,7 +193,7 @@ $titles.editor({
     onblur: function(event) {
       // By default we save on blur, but maybe
       // we want to avoid accidental edits
-    	this.editor('revert', event.data);
+        this.editor('revert', event.data);
     }
 });
 

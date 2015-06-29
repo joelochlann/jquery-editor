@@ -1,21 +1,21 @@
 {
-	"predef" : [
-		"jQuery"
-	],
+    "predef" : [
+        "jQuery"
+    ],
 
-	"eqeqeq": true,
-	"immed": true,
-	"noempty": true,
-	"quotmark": "single",
-	"undef": true,
-	"unused": true,
-	"trailing": true,
+    "eqeqeq": true,
+    "immed": true,
+    "noempty": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": true,
+    "trailing": true,
 
-	"eqnull": true,
-	"laxbreak": true,
-	"laxcomma": true,
-	"scripturl": true,
-	"smarttabs": true,
+    "eqnull": true,
+    "laxbreak": true,
+    "laxcomma": true,
+    "scripturl": true,
+    "smarttabs": true,
 
-	"browser": true
+    "browser": true
 }
